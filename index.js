@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 var program = require('commander');
 const slugify = require('slugify');
 const rename = require('rename');
-const thisDir = path.resolve('./');
+const thisDir = path.resolve('./'); //path.basename(process.cwd());
 const {
   exec
 } = require('child_process');
