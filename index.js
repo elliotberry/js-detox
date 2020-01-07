@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-
 const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
 const program = require("commander");
-
-const format = require("./parse.js");
-const f = require("./files.js");
-const fd = require('./fd.js');
+const format = require('./slugify.js');
+const fd = require('./fs.js');
 const thisDir = path.resolve('./');
 
 async function start() {
