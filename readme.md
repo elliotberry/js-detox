@@ -19,7 +19,7 @@ I wanted to be able to install my detox setup with `npm`. This is probably less 
 
 ## Usage
 
-`cd` into a dir, run `jdetox --dry-run` to see what'll get changed. Then run it for reals.
+`cd` into a dir, run `jdtx --dry-run` to see what'll get changed. Then run it for reals.
 
 ## Acknowledgements
 

@@ -1,5 +1,5 @@
 {
-  "name": "dtx",
+  "name": "jdtx",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "url": "git+ssh://git@bitbucket.org/erberry/js-detox.git"
   },
   "bin": {
-    "jdetox": "./index.js"
+    "jdtx": "./index.js"
   },
   "author": "Elliot Berry",
   "license": "ISC",
