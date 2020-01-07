@@ -14,7 +14,7 @@ I wanted to be able to install my detox setup with `npm`. This is probably less 
 
 ### Installation
 
-1. `npm install -g js-detox` or git clone this repository, `cd` in, and `npm install -g .`.
+1. `npm install -g jdtx` or git clone this repository, `cd` in, and `npm install -g .`.
 
 
 ## Usage
