@@ -4,7 +4,7 @@ const path = require("path");
 const chalk = require("chalk");
 const program = require("commander");
 const format = require('./slugify.js');
-const fd = require('./fs.js');
+const fd = require('./fs2.js');
 const thisDir = path.resolve('./');
 
 async function start() {
@@ -14,11 +14,10 @@ async function start() {
         let p = path.parse(f);
         let newName = format(p.name);
         if (p.name !== newName) {
-            console.log(chalk.blue.bold.underline(p.base) + " --> " + chalk.blue.bold(newName));
+            console.log(chalk.blue.bold.underline(p.base) + " --> " + chalk.blue.bold(newName + p.ext));
             if (!program.dryrun) {
               //console.log(thisDir + "/" + f, thisDir + "/" + newName);
               fs.renameSync(thisDir + "/" + f, thisDir + "/" + newName + p.ext);
-                //rename(thisDir + "/" + f, thisDir + "/" + newName);
             }
         }
     });

@@ -18,9 +18,6 @@
   "homepage": "https://bitbucket.org/erberry/js-detox#readme",
   "dependencies": {
     "chalk": "^3.0.0",
-    "commander": "^4.0.1",
-    "recursive-readdir": "^2.2.2",
-    "rename": "^1.0.4",
-    "slugify": "^1.3.6"
+    "commander": "^4.0.1"
   }
 }

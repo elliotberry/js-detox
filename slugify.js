@@ -1,4 +1,4 @@
-module.exports = function(str) => {
+module.exports = function(str) {
     str = String(str).toString();
     str = str.replace(/^\s+|\s+$/g, ""); // trim
     str = str.toLowerCase();
