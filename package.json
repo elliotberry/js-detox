@@ -11,7 +11,7 @@
     "url": "git+ssh://git@bitbucket.org/erberry/js-detox.git"
   },
   "bin": {
-    "dtx": "./index.js"
+    "jdetox": "./index.js"
   },
   "author": "Elliot Berry",
   "license": "ISC",
