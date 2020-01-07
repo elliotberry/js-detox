@@ -1,21 +1,18 @@
 {
   "name": "jdtx",
   "version": "1.2.0",
-  "description": "",
+  "description": "Cleanses filenames for general use, removing spaces, special characters, and odd symbols.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/erberry/js-detox.git"
+    "url": "git+https://github.com/elliotberry/js-detox.git"
   },
   "bin": {
     "jdtx": "./index.js"
   },
   "author": "Elliot Berry",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/erberry/js-detox#readme",
+  "license": "Unlicense",
+  "homepage": "https://github.com/elliotberry/js-detox",
   "dependencies": {
     "chalk": "^3.0.0",
     "commander": "^4.0.1"
