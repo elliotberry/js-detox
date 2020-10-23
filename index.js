@@ -2,27 +2,44 @@
 const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
-const program = require("commander");
-const format = require('./slugify.js');
-const fd = require('./fs2.js');
-const thisDir = path.resolve('./');
+const format = require("./slugify.js");
+const fd = require("./fs2.js");
+const ignore = require("./match-ignore")
+const thisDir = path.resolve("./");
 
-async function start() {
-    let r = await fd(thisDir);
+const findFilesToChange = async function(filesArray) {
+  let filesToChange = [];
+ for await (f of filesArray) {
+    let p = path.parse(f);
+    let oldName = p.name;
+    let newName = format(oldName);
+    if (p.name !== newName) {
+      filesToChange.push({oldName: oldName, newName: newName})
+    }
+  }
+  return filesToChange
+}
+async function showFileUpdates(pathObjArr) {
+  pathObjArr.forEach(obj => {
+    console.log(
+      chalk.blue.bold.underline(obj.oldName) +
+        " --> " +
+        chalk.blue.bold(obj.newName)
+    );
+  });
 
-    r.forEach(function(f) {
-        let p = path.parse(f);
-        let newName = format(p.name);
-        if (p.name !== newName) {
-            console.log(chalk.blue.bold.underline(p.base) + " --> " + chalk.blue.bold(newName + p.ext));
-            if (!program.dryrun) {
-              //console.log(thisDir + "/" + f, thisDir + "/" + newName);
-              fs.renameSync(thisDir + "/" + f, thisDir + "/" + newName + p.ext);
-            }
-        }
-    });
 }
 
-program.option("-d, --dryrun", "Dry run (show changes)");
-program.parse(process.argv);
+async function start() {
+
+    let filesArray = await fd(thisDir);
+    let filtered = await ignore(filesArray);
+   const filteredNum = filesArray.length - filtered.length
+    const filesToChange = await findFilesToChange(filtered)
+    console.log(`${filesToChange.length} files to rename. ${filteredNum} filtered with default ignore.`)
+
+}
+
+//program.option("-d, --dry-run", "Dry run (show changes)");
+//program.parse(process.argv);
 start();
