@@ -4,8 +4,8 @@ const path = require("path");
 const chalk = require("chalk");
 const format = require("./slugify.js");
 const fd = require("./fs2.js");
-//const ignore = require("./match-ignore");
-const thisDir = path.resolve("./");
+const ignore = require("./match-ignore");
+const thisDir = path.resolve(".");
 
 const findFilesToChange = async function (filesArray) {
   let filesToChange = [];
@@ -31,13 +31,13 @@ async function showFileUpdates(pathObjArr) {
 }
 
 async function start() {
+  console.log(`looking in this dir: ${chalk.blue.bold.underline(thisDir)}`)
   let filesArray = await fd(thisDir);
-  //let filtered = await ignore(filesArray);
-  //const filteredNum = filesArray.length - filtered.length;
-  const filesToChange = await findFilesToChange(filesArray);
-  console.log(
-    `${filesToChange.length} files to rename: \n`
-  );
+  let filtered = await ignore(filesArray);
+  const filteredNum = filesArray.length - filtered.length;
+  const filesToChange = await findFilesToChange(filtered);
+  console.log(`found ${filesArray.length} files, filtered ${filteredNum}. ${filesToChange.length} files to rename.`)
+
   showFileUpdates(filesToChange)
 }
 

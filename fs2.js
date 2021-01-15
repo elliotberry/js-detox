@@ -32,7 +32,7 @@ var walk = function(dir, done) {
   });
 };
 
-module.exports = async function(dir) {
+module.exports = function(dir) {
     return new Promise(function(res, rej) {
         walk(dir, function(err, results) {
             if (err) {

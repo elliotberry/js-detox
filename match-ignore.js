@@ -1,24 +1,24 @@
-
-
+var glob = require('glob');
 const ignores = [
     ".git",
-    "node_modules"
+    "node_modules",
+    //"LICENSE",
+    //"README"
 ]
 
 
+
 module.exports = async function(files) {
-    let filtered = []
-    files.forEach(file => {
-        let ret = true
+   
+    return files.filter(file => {
+        let ret = false;
         for (let x=0; x < ignores.length; x++) {
-            if (file.includes(ignores[x])) {
-                ret = false;
+            if (file.indexOf(ignores[x] > -1)) {
+                ret = true;
                 break;
             }
         }
-        if (ret === true) {
-            filtered.push(file);
-        }
+       return ret
     })
-    return filtered
+
 };
