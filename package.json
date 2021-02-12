@@ -14,8 +14,7 @@
   "license": "Unlicense",
   "homepage": "https://github.com/elliotberry/js-detox",
   "dependencies": {
-    "chalk": "^3.0.0",
-    "commander": "^4.0.1",
-    "glob": "^7.1.6"
+    "fast-glob": "^3.2.4",
+    "picomatch": "^2.2.2"
   }
 }
